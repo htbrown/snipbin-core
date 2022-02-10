@@ -1,12 +1,15 @@
 # Config Files
 .vscode
+.idea
 
 # Environment Variables
 .env
 .env.test
 
-# Dependency Directories
+# Dependencies
 node_modules
+yarn.lock
+package-lock.json
 
 # Typescript-Specific
 dist
