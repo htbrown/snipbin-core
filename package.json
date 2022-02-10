@@ -6,6 +6,12 @@
   "repository": "https://github.com/htbrown/snipbin-core.git",
   "author": "htbrown",
   "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "build-watch": "tsc --watch",
+    "run": "node .",
+    "run-dev": "nodemon ."
+  },
   "dependencies": {
     "dotenv": "^16.0.0",
     "express": "^4.17.2"
