@@ -14,6 +14,9 @@ app.get('/', (req, res) => {
     res.send(response);
 });
 
+import { router as v1 } from './routes/api/v1';
+app.use('/api/v1', v1);
+
 app.listen(process.env.PORT || 4000, () => {
     console.log(`Listening on ${process.env.HOSTNAME}:${process.env.PORT || 4000}.`)
 })
