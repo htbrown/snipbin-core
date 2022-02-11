@@ -10,3 +10,19 @@ router.get('/', (req, res) => {
     };
     res.send(response);
 });
+
+router.route('/snip')
+    .get((req, res) => {
+        res.send('to be implemented');
+    })
+    .post((req, res) => {
+        res.send('to be implemented');
+    });
+
+router.route('/tag')
+    .get((req, res) => {
+        res.send('to be implemented');
+    })
+    .post((req, res) => {
+        res.send('to be implemented');
+    });

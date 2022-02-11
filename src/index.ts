@@ -6,6 +6,9 @@ import { ApiResponse } from './modules/types';
 const app = express();
 dotenv.config();
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 app.get('/', (req, res) => {
     let response: ApiResponse = {
         status: 200,
