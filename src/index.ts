@@ -12,7 +12,7 @@ app.use(express.json());
 app.get('/', (req, res) => {
     let response: ApiResponse = {
         status: 200,
-        message: `Snipbin Core v${require('../package.json').version} by ${require('../package.json').author}`
+        message: `Snipbin Core v${require('../package.json').version} by ${require('../package.json').author} and contributors`
     }
     res.send(response);
 });
