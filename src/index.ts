@@ -3,11 +3,13 @@ import * as express from 'express';
 
 import { ApiResponse } from './modules/types';
 import DatabaseManager from './modules/databaseManager';
+import Logger from './modules/logger';
 
 dotenv.config();
 const app = express();
 
-const databaseManager = new DatabaseManager();
+const logger = new Logger();
+const databaseManager = new DatabaseManager(logger);
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -24,6 +26,6 @@ import { router as v1 } from './routes/api/v1';
 app.use('/api/v1', v1);
 
 app.listen(process.env.PORT || 4000, async () => {
-    console.log(`Listening on ${process.env.HOSTNAME}:${process.env.PORT || 4000}.`);
+    logger.log('info', `Listening on ${process.env.HOSTNAME}:${process.env.PORT || 4000}.`);
     await databaseManager.authenticate();
 })
