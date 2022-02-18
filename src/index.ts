@@ -4,12 +4,15 @@ import * as express from 'express';
 import { ApiResponse } from './modules/types';
 import DatabaseManager from './modules/databaseManager';
 import Logger from './modules/logger';
+import Middleware from './modules/middleware';
 
 dotenv.config();
 const app = express();
 
 const logger = new Logger();
 const databaseManager = new DatabaseManager(logger);
+
+export const middleware = new Middleware(logger, app);
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
