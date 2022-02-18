@@ -2,8 +2,8 @@ import { Sequelize, Model, DataTypes } from 'sequelize';
 import Logger from './logger';
 
 export default class DatabaseManager {
-    sequelize: Sequelize;
-    logger: Logger;
+    private sequelize: Sequelize;
+    private logger: Logger;
 
     constructor(logger: Logger) {
         this.logger = logger;
