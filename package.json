@@ -9,8 +9,8 @@
   "scripts": {
     "build": "tsc",
     "build-watch": "tsc --watch",
-    "run": "node .",
-    "run-dev": "nodemon ."
+    "start": "node .",
+    "start-dev": "nodemon ."
   },
   "dependencies": {
     "dotenv": "^16.0.0",
