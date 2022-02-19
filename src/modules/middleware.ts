@@ -13,7 +13,7 @@ export default class Middleware {
     }
 
     private logging(req: express.Request, res: express.Response, next: express.NextFunction) {
-        this.logger.log('request', `${req.method} ${req.url} (${req.ip})`);
+        this.logger.log('express', `${req.method} ${req.url} (${req.ip})`);
         next();
     }
 }

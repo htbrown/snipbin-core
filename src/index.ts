@@ -10,7 +10,7 @@ dotenv.config();
 const app = express();
 
 const logger = new Logger();
-const databaseManager = new DatabaseManager(logger);
+export const databaseManager = new DatabaseManager(logger);
 
 export const middleware = new Middleware(logger, app);
 
@@ -29,6 +29,6 @@ import { router as v1 } from './routes/api/v1';
 app.use('/api/v1', v1);
 
 app.listen(process.env.PORT || 4000, async () => {
-    logger.log('info', `Listening on ${process.env.HOSTNAME}:${process.env.PORT || 4000}.`);
+    logger.log('express', `Listening on ${process.env.HOSTNAME}:${process.env.PORT || 4000}.`);
     await databaseManager.authenticate();
 })

@@ -15,9 +15,9 @@ export default class DatabaseManager {
     async authenticate() {
         try {
             await this.sequelize.authenticate();
-            this.logger.log('success', 'Connected to PostgresSQL server.');
+            this.logger.log('postgres', 'Connected to PostgresSQL server.');
         } catch (err) {
-            this.logger.log('error', `Unable to connect to PostgresSQL server:`, err);
+            this.logger.log('postgres', `ERROR: Unable to connect to PostgresSQL server:`, err);
         }
     }
 
