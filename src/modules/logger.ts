@@ -9,7 +9,7 @@ export default class Logger {
     log(type: string, message: string, error?: Error): void {
         console.log(this.currentDateTime + ` (${type}) ${message}`)
         if (error) {
-            console.log(this.currentDateTime + ` (${type}) ${error.stack}`);
+            console.log(error.stack);
         }
     }
 }
