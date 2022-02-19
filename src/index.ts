@@ -17,7 +17,7 @@ export const middleware = new Middleware(logger, app);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.get('/', (req, res) => {
+app.get('/', (req: express.Request, res: express.Response) => {
     let response: ApiResponse = {
         status: 200,
         message: `Snipbin Core v${require('../package.json').version} by ${require('../package.json').author} and contributors`
