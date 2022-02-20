@@ -30,4 +30,7 @@ app.use('/api/v1', v1);
 
 app.listen(process.env.PORT || 4000, async () => {
     logger.log('express', `Listening on ${process.env.HOSTNAME}:${process.env.PORT || 4000}.`);
+    await databaseManager.authenticate()
+        .then(() => logger.log('mongo', 'Connected to MongoDB.'))
+        .catch(err => logger.log('mongo', 'ERROR: Could not connect to MongoDB.', err));
 })
