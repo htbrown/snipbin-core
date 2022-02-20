@@ -30,5 +30,4 @@ app.use('/api/v1', v1);
 
 app.listen(process.env.PORT || 4000, async () => {
     logger.log('express', `Listening on ${process.env.HOSTNAME}:${process.env.PORT || 4000}.`);
-    await databaseManager.authenticate();
 })

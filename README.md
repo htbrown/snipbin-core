@@ -19,7 +19,7 @@ I say it's a code snippet organiser, but I'm really intending on making it into 
 
 ## Expectations
 
-I'm taking this as a learning opportunity, too. Constructive criticism is very much welcome - please submit an issue or PR! This is my first actual project with SQL (in particular using postgres) so things might be a bit rough around the edges for a while.
+I'm taking this as a learning opportunity, too. Constructive criticism is very much welcome - please submit an issue or PR! ~~This is my first actual project with SQL (in particular using postgres)~~ Okay, I might have given up on that slightly, but things still might be a bit rough around the edges for a while.
 
 ## Contributions
 
