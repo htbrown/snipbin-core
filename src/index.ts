@@ -9,9 +9,8 @@ import Middleware from './modules/middleware';
 dotenv.config();
 const app = express();
 
-const logger = new Logger();
+export const logger = new Logger();
 export const databaseManager = new DatabaseManager(logger);
-
 export const middleware = new Middleware(logger, app);
 
 app.use(express.urlencoded({ extended: true }));
