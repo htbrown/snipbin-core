@@ -23,7 +23,7 @@ router.route('/snip')
                     status: 200,
                     data: await databaseManager.models.snip.find().exec()
                 }
-            } else if (req.query.id.length === 12) {
+            } else if (req.query.id.length >= 12) {
                 result = {
                     status: 200,
                     data: await databaseManager.models.snip.find({ _id: req.query.id }).exec()
