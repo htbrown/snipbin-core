@@ -2,7 +2,7 @@ import * as mongoose from 'mongoose';
 
 export interface ApiResponse {
     status: number;
-    message: string;
+    message?: string;
     data?: any;
     error?: boolean;
 }
