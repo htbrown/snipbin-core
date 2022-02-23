@@ -9,7 +9,7 @@ export default class DatabaseManager {
     private logger: Logger;
     public connection: mongoose.Connection;
 
-    public models: Models;
+    public models: Models = {};
 
     constructor(logger: Logger) {
         this.logger = logger;
