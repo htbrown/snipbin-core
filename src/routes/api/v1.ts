@@ -34,6 +34,7 @@ router.route('/snip')
                     error: true,
                     data: 'Invalid ID.'
                 }
+                res.status(400);
             }
         } catch (err) {
             result = {
@@ -41,6 +42,7 @@ router.route('/snip')
                 error: true,
                 data: err.message
             }
+            res.status(500);
             logger.log('express', 'ERROR: Something went wrong while returning a result.', err);
         }
 
@@ -54,6 +56,9 @@ router.route('/snip')
                 error: true,
                 data: 'No name provided.'
             }
+            res.status(400);
+            res.send(result);
+            return;
         }
 
         let NewSnip = new databaseManager.models.snip({
@@ -71,14 +76,15 @@ router.route('/snip')
                     error: true,
                     data: err.message
                 }
+                res.status(500);
             }
 
             result = {
                 status: 200,
                 data: snip
             }
+            res.send(result);
         })
-        res.send(result);
     });
 
 router.route('/tag')
