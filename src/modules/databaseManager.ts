@@ -21,4 +21,14 @@ export default class DatabaseManager {
         await mongoose.connect(`mongodb://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_HOST}:${process.env.MONGO_PORT}/${process.env.MONGO_DATABASE}?authSource=admin`);
         this.connection = mongoose.connection;
     }
+
+    checkId(id: string): boolean {
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return false;
+        } else if (new mongoose.Types.ObjectId(id).toString() !== id) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 }
