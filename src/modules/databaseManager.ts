@@ -22,7 +22,7 @@ export default class DatabaseManager {
         this.connection = mongoose.connection;
     }
 
-    checkId(id: string): boolean {
+    public static checkId(id: string): boolean {
         if (!mongoose.Types.ObjectId.isValid(id)) {
             return false;
         } else if (new mongoose.Types.ObjectId(id).toString() !== id) {
