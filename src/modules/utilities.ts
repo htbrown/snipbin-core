@@ -4,10 +4,10 @@ import { ApiResponse } from './types';
 
 export default class Utilities {
 
-    public static sendError(status: number, message: string, res: express.Response) {
-        logger.log('express', `WARN: A ${status} error was sent for the last call with the following message: \n${message}`);
-        
-        let result: ApiResponse = { status, error: true, data: message };
+    public static sendError(status: number, error: Error, res: express.Response) {
+        logger.log('express', `WARN: A ${status} error was sent for the last call.`, error);
+
+        let result: ApiResponse = { status, error: true, data: error.message };
         res.status(status);
         res.send(result);
     }
