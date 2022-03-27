@@ -56,7 +56,7 @@ router.route('/snip')
         result = { status: 200, data: snip, message: `Created new snip with ID ${snip._id}` }
         res.send(result);
 
-        logger.log('mongoose', `Created new snip with ID ${snip._id}`);
+        logger.log('mongo', `Created new snip with ID ${snip._id}`);
     });
 })
 .delete(async (req, res) => {
@@ -71,6 +71,6 @@ router.route('/snip')
         result = { status: 200, message: `Deleted snip with ID ${req.query.id}` };
         res.send(result);
 
-        logger.log('mongoose', `Deleted snip with ID ${req.query.id}`);
+        logger.log('mongo', `Deleted snip with ID ${req.query.id}`);
     })
 });
