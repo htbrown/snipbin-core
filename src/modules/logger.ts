@@ -3,13 +3,18 @@ export default class Logger {
 
     get currentDateTime(): string {
         let date = new Date();
-        return `${ date.getDay() < 10 ? '0' : '' }${date.getDay()}/${ date.getMonth() < 10 ? '0' : '' }${date.getMonth()}/${date.getFullYear()} ${ date.getHours() < 10 ? '0' : '' }${date.getHours()}:${ date.getMinutes() < 10 ? '0' : '' }${date.getMinutes()}:${ date.getSeconds() < 10 ? '0' : '' }${date.getSeconds()}`;
+        let dd = String(date.getDate()).padStart(2, '0');
+        let mm = String(date.getMonth() + 1).padStart(2, '0');
+        let yyyy = date.getFullYear();
+        return `${dd}/${mm}/${yyyy}`;
     }
 
-    log(type: string, message: string, error?: Error): void {
-        console.log(this.currentDateTime + ` (${type}) ${message}`)
+    log(type: string, message: string, error?: Error, short?: boolean): void {
+        let prefix = this.currentDateTime + ` (${type}) `
+        console.log(`${prefix}${message.replace('\\n', '\\n' + ' '.repeat(prefix.length))}`);
         if (error) {
-            console.log(error.stack);
+            if (short) return console.log(' '.repeat(prefix.length) + 'Message: ' + error.message);
+            console.log(' '.repeat(prefix.length) + error.stack);
         }
     }
 }
