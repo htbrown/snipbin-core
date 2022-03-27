@@ -53,7 +53,23 @@ router.route('/snip')
     NewSnip.save((err: Error, snip: any) => {
         if (err) return Utilities.sendError(500, err, res);
 
-        result = { status: 200, data: snip, message: 'Created new snip' }
+        result = { status: 200, data: snip, message: `Created new snip with ID ${snip._id}` }
         res.send(result);
+
+        logger.log('mongoose', `Created new snip with ID ${snip._id}`);
     });
+})
+.delete(async (req, res) => {
+    let result: ApiResponse;
+    if (!req.query.id) return Utilities.sendError(400, new Error('No ID provided'), res);
+    if ((await databaseManager.models.snip.find({ _id: req.query.id }).exec()).length < 1) return Utilities.sendError(404, new Error('No snip with ID found'), res);
+
+    databaseManager.models.snip.deleteOne({ _id: req.query.id }, err => {
+        if (err) return Utilities.sendError(500, err, res);
+
+        result = { status: 200, message: `Deleted snip with ID ${req.query.id}` };
+        res.send(result);
+
+        logger.log('mongoose', `Deleted snip with ID ${req.query.id}`);
+    })
 });
