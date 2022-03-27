@@ -62,6 +62,7 @@ router.route('/snip')
 .delete(async (req, res) => {
     let result: ApiResponse;
     if (!req.query.id) return Utilities.sendError(400, new Error('No ID provided'), res);
+    if (!DatabaseManager.checkId(req.query.id.toString())) return Utilities.sendError(400, new Error('Invalid snip ID'), res);
     if ((await databaseManager.models.snip.find({ _id: req.query.id }).exec()).length < 1) return Utilities.sendError(404, new Error('No snip with ID found'), res);
 
     databaseManager.models.snip.deleteOne({ _id: req.query.id }, err => {
